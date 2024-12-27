@@ -11,7 +11,7 @@ def load_env_variables(environment: str) -> None:
     """
     Load environment variables.
     :param environment: The current working environment. Either development or demo.
-    :return:
+    :return: None
     """
     if environment.lower() == "development":
         if not os.path.exists(".env.development"):
