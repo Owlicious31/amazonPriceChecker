@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 
 logging.basicConfig(level=logging.INFO, format="%(filename)s - %(levelname)s - %(message)s - %(asctime)s")
 
-def load_env_variables(environment: str) -> None:
+def load_env_variables(environment: str)-> None:
     """
     Load environment variables.
     :param environment: The current working environment. Either development or demo.
@@ -137,14 +137,20 @@ def send_mail(email: str, password: str, recipient: str, new_price: float, produ
             user=email,
             password=password
         )
-        connection.sendmail(
-            from_addr=email,
-            to_addrs=recipient,
-            msg=f"""Subject:Price decrease on product you're watching!
-            \n\n{product_name} just dropped to ${new_price}. Your target price was ${TARGET_PRICE}.
-            \rCheck out the product at {product_url}.""".encode("utf-8")
-        )
-        logging.info("Email sent.")
+        try:
+            connection.sendmail(
+                from_addr=email,
+                to_addrs=recipient,
+                msg=f"""Subject:Price decrease on product you're watching!
+                \n\n{product_name} just dropped to ${new_price}. Your target price was ${TARGET_PRICE}.
+                \rCheck out the product at {product_url}.""".encode("utf-8")
+            )
+
+        except Exception as e:
+            logging.error(f"Error sending email:{e}")
+
+        else:
+            logging.info("Email sent.")
 
 
 product_info: tuple = get_product_info(url=AMAZON_URL, parser=PARSER)
