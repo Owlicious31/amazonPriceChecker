@@ -29,7 +29,7 @@ def load_env_variables(environment: str) -> None:
             logging.info(".env.demo loaded")
 
 
-load_env_variables(environment="development")
+load_env_variables(environment="demo")
 
 #Info for sending emails
 EMAIL: str = os.getenv("EMAIL")
