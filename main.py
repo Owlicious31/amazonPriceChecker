@@ -30,7 +30,7 @@ def load_env_variables(environment: str)-> None:
             logging.info(".env.demo loaded")
 
 
-load_env_variables(environment="development")
+load_env_variables(environment="demo")
 
 #Info for sending emails
 EMAIL: str = os.getenv("EMAIL")
@@ -99,6 +99,7 @@ def get_product_info(parser: str, url: str) -> tuple:
 
             listed_price: float = float(price_tag)
 
+            #Getting product name
             try:
                 price_title_split: list = str(soup.select_one(selector="span#productTitle").text).split()
 
