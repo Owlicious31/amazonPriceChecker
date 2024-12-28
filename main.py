@@ -33,11 +33,29 @@ def load_env_variables(environment: str)-> None:
 load_env_variables(environment="demo")
 
 #Info for sending emails
-EMAIL: str = os.getenv("EMAIL")
-EMAIL_PASSWORD: str = os.getenv("PASSWORD")
+EMAIL: str | None = os.getenv("EMAL")
+EMAIL_PASSWORD: str | None = os.getenv("PASWORD")
+RECIPIENT: str | None = os.getenv("RECIPIET")
 EMAIL_HOST: str = "smtp.gmail.com"
 EMAIL_PORT: int = 587
-RECIPIENT: str = os.getenv("RECIPIENT")
+
+ENV_VARS: dict[str | None ,str] = {
+    "EMAIL":EMAIL,
+    "EMAIL_PASSWORD":EMAIL_PASSWORD,
+    "RECIPIENT":RECIPIENT,
+}
+
+load_success: bool = True
+
+for name,var in ENV_VARS.items():
+    if not var:
+        logging.critical(f"Environment variable failed to load: {name}")
+        load_success = False
+    else:
+        logging.info(f"Loaded environment variable: {name}")
+
+if not load_success:
+    raise Exception("Failed to load environment variables.")
 
 #Target price we want for the product
 TARGET_PRICE: int = 100
