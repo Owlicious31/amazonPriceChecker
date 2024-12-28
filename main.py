@@ -33,9 +33,9 @@ def load_env_variables(environment: str)-> None:
 load_env_variables(environment="demo")
 
 #Info for sending emails
-EMAIL: str | None = os.getenv("EMAL")
-EMAIL_PASSWORD: str | None = os.getenv("PASWORD")
-RECIPIENT: str | None = os.getenv("RECIPIET")
+EMAIL: str | None = os.getenv("EMAIL")
+EMAIL_PASSWORD: str | None = os.getenv("PASSWORD")
+RECIPIENT: str | None = os.getenv("RECIPIENT")
 EMAIL_HOST: str = "smtp.gmail.com"
 EMAIL_PORT: int = 587
 
