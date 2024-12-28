@@ -63,7 +63,7 @@ def get_product_info(parser: str, url: str) -> tuple:
     Fetch the price and name of an Amazon product.
     :param parser: Parser to be used on the website's html.
     :param url: The product's URL.
-    :return: listed_price: The product price and name.
+    :return: listed_price: The product name and price.
     """
     global MAX_RETRIES
 
