@@ -157,7 +157,7 @@ def send_mail(email: str, password: str, recipient: str, new_price: float, produ
 product_info: tuple = get_product_info(url=AMAZON_URL, parser=PARSER)
 
 if not product_info:
-    logging.critical("Could not get price info.")
+    logging.critical("Could not get product info.")
 
 else:
     product: str =  product_info[0]
