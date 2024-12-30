@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 
 logging.basicConfig(level=logging.INFO, format="%(filename)s - %(levelname)s - %(message)s - %(asctime)s")
 
-def load_env_variables(environment: str)-> None:
+def load_env_variables(environment: str) -> None:
     """
     Load environment variables.
     :param environment: The current working environment. Either development or demo.
@@ -39,7 +39,7 @@ RECIPIENT: str | None = os.getenv("RECIPIENT")
 EMAIL_HOST: str = "smtp.gmail.com"
 EMAIL_PORT: int = 587
 
-ENV_VARS: dict[str | None ,str] = {
+ENV_VARS: dict[str, str | None ] = {
     "EMAIL":EMAIL,
     "EMAIL_PASSWORD":EMAIL_PASSWORD,
     "RECIPIENT":RECIPIENT,
